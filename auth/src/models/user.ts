@@ -7,6 +7,19 @@ interface UserAttributes {
   password: string;
 }
 
+// an interface that describes the properties that user Model is
+
+interface UserModel extends mongoose.Model<UserDoc> {
+  build(attrs: UserAttributes): UserDoc;
+}
+
+// An interface that describes the properties that a User Document has this is where we'd add any properties mongoose adds
+interface UserDoc extends mongoose.Document {
+  email: string;
+  password: string;
+}
+
+
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -17,18 +30,23 @@ const userSchema = new mongoose.Schema({
     required: true
   }
 });
-
-const User = mongoose.model('User', userSchema);
-
 /* this is a trick we need to use to make mongoose and typescript play nice. It is not not just "new user()" but it requires the typescript interface passed to allow typescript to 
 type check the data that we are throwing into it, so that we get the benefits of typescript
 */
 
-const buildUser = (attrs: UserAttributes) => {
-  return new User(attrs);
-};
+
+userSchema.statics.build = (attrs: UserAttributes) => {
+  return new User(attrs)
+}
+
+const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
+
+
+const user = User.build({
+  email: 'Whatver',
+  password: 'whatever',
+});
 
 
 
-
-export { User, buildUser };
+export { User };
