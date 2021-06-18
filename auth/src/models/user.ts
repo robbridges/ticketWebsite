@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { Password } from '../services/password';
 
 // An TS interface that describes the properties that are required to create a new user
 
@@ -29,6 +30,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   }
+});
+
+userSchema.pre('save', async function(done) {
+  if (this.isModified('password')) {
+    const hashed = await Password.toHash(this.get('password'));
+    this.set('password', hashed);
+  }
+  done();
 });
 /* this is a trick we need to use to make mongoose and typescript play nice. It is not not just "new user()" but it requires the typescript interface passed to allow typescript to 
 type check the data that we are throwing into it, so that we get the benefits of typescript
