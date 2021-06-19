@@ -44,7 +44,8 @@ router.post('/api/users/signup', [
   const userJwt = jwt.sign({
     id: user.id,
     email: user.email
-  }, 'asdf')
+  }, process.env.JWT_TOKEN!
+  );
 
   // we have to store it as an object because typescript does not like the type definition
   req.session = {
