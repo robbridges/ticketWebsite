@@ -9,6 +9,8 @@ import { validateRequest } from '../middlewares/validate-request';
 import { BadRequestError } from '../errors/bad-request-error';
 
 const router = express.Router();
+/* Sign in route, all that this really does is check the database for a matching email address, and checking to see if our hashed/salted PW matches what was provided during the
+login in attempt. If either fail we return an unhelpful Credentials do not match. We do not want a malicious user to know if their password or email was invalid */
 
 router.post('/api/users/signin', [
   body('email')
