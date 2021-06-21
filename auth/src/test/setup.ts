@@ -5,9 +5,10 @@ import { app } from '../app';
 
 let mongo: any;
 
+
 beforeAll(async () => {
   
-  mongo = new MongoMemoryServer;
+  mongo = new MongoMemoryServer();
   const mongoUri = await mongo.getUri();
 
   await mongoose.connect(mongoUri, {
