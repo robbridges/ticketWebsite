@@ -10,21 +10,26 @@ type Props ={
     email: string,
     password: string,
   }
+  onSuccess: Function
 }
 
-const UseRequest =  ({url, method, body} : Props) => {
-  //const [errors, setErrors] = useState<Error[] | null>([])
+const UseRequest =  ({url, method, body, onSuccess} : Props) => {
   const [errors, setErrors] = useState<Error[] | []>([])
 
   const doRequest = async () => {
     try {
+      setErrors([]);
       // I had to ignore the error below for Axios because we need to do a method look up to see what is being called, as this is going to be a very popular fuction called in a lot of our blocks
 
       //@ts-ignore
       const response = await axios[method](url, body);
+      if(onSuccess) {
+        onSuccess(response.data);
+      }
       return response.data;
     } catch (err) {
       setErrors(err.response.data.errors);
+      
       return errors;
     }
   };
