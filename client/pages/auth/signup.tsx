@@ -2,7 +2,13 @@ import React, {useState} from 'react';
 import Router from 'next/router';
 import UseRequest from '../../hooks/useRequest';
 
+/*
+This is our sign up form, it essentially takes all of the data that we pass into it and makes a request to the api sign up method.
 
+It also conditionally shows our validaiton errors in the event that the password is blank, too short. Long exct. 
+
+
+*/
 const SignUpForm =  () => {
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');

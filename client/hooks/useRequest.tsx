@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 //this hook should handle our error creation, and also allow us to make axios post requests, this saves us a lot of code duplication in the future
 
+// TS action, we are telling typescript what the url and body will be so that it doesn't throw any errors
 type Props ={
   url: string;
   method: string 
@@ -14,7 +15,7 @@ type Props ={
 }
 
 const UseRequest =  ({url, method, body, onSuccess} : Props) => {
-  const [errors, setErrors] = useState<Error[] | []>([])
+  const [errors, setErrors] = useState<Error[] | []>([]) // since we conditionally check to see if the error array exists we set it to an empty array first, instead of null then check it's len
 
   const doRequest = async () => {
     try {
