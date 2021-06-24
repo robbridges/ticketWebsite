@@ -13,8 +13,9 @@ type Props ={
 }
 
 const UseRequest =  ({url, method, body} : Props) => {
-  const [errors, setErrors] = useState<Error[] | null>(null)
-  
+  //const [errors, setErrors] = useState<Error[] | null>([])
+  const [errors, setErrors] = useState<Error[] | []>([])
+
   const doRequest = async () => {
     try {
       // I had to ignore the error below for Axios because we need to do a method look up to see what is being called, as this is going to be a very popular fuction called in a lot of our blocks

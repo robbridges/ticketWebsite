@@ -25,11 +25,11 @@ const { doRequest, errors } = UseRequest ({
   return ( 
   <form onSubmit={onSubmit}>
     
-    {  errors?.length > 0 && (
+    {  errors.length > 0 && (
       <div className="alert alert-danger">
       <h4>Validation error occured</h4>
       <ul className="my-0">
-        {errors!.map(err => (<li key={err.message}>{err.message}</li>))}
+        {errors.map(err => (<li key={err.message}>{err.message}</li>))}
       </ul>
       </div>)
     }
