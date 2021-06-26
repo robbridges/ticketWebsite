@@ -8,8 +8,8 @@ type Props ={
   url: string;
   method: string 
   body: {
-    email: string,
-    password: string,
+    email?: string,
+    password?: string,
   }
   onSuccess: Function
 }
