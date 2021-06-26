@@ -2,10 +2,7 @@ import axios from 'axios';
 import {  NextPageContext } from 'next';
 
 
-interface serverResponse  {
-  data?: currentUser
-  req: Request
-}
+
 
 
 
@@ -47,7 +44,7 @@ LandingPage.getInitialProps = async ( {req} : NextPageContext ) => {
       console.log(err.message);
     }
     
-    // return response.data;
+    
 
   } else {
     // we are on browser requests can be made to regular url
