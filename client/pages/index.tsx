@@ -1,27 +1,42 @@
-import axios from 'axios';
-import { string } from 'prop-types';
+import axios, { AxiosResponse } from 'axios';
+
+interface serverResponse  {
+  data: currentUser
+}
+
+
+
+interface currentUser  {
+  id: string,
+  email: string,
+  iat: number
+
+}
 
 type Props = {
-  currentUser: {
-    id: string,
-    email: string,
-    iat: number
-  }
+  currentUser :currentUser
 }
 // this is our landing page, it is going to try to get props passed in if a current user is signed in. So that we can then conditionally different objects
 const LandingPage = ({ currentUser } : Props) => {
   console.log(currentUser);
-  axios.get('/api/users/currentuser').catch((err) => {
-    console.log(err.message);
-  });
  
   return <h1>Landing Page</h1>;
 };
 
-// LandingPage.getInitialProps = async () => {
-//   const response = await axios.get('api,users/currentuser');
-  
-//   return response.data;
-// };
+LandingPage.getInitialProps = async () => {
+  if (typeof window === 'undefined') {
+    // we are on server, make request to nginx
+  } else {
+    // we are on browser requests can be made to regular url
+    
+    const response : any  = await axios.get<currentUser>('/api/users/currentuser').catch((err) => {
+      console.log(err.message);
+    });
+    return response.data;
+    
+  }
+  return {};
+
+};
 
 export default LandingPage;
