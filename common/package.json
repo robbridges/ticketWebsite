@@ -1,6 +1,6 @@
 {
   "name": "@ticket.dev/common",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./build/index.js",
   "types": "/build/index.d.ts",
@@ -8,8 +8,9 @@
     "build/**/*"
   ],
   "scripts": {
-    "clean" : "del-cli ./build/*",
-    "build" : "npm run clean && tsc"
+    "clean": "del-cli ./build/*",
+    "build": "npm run clean && tsc",
+    "pub": "git add . && git commit -a -m \"Updates to configuration\" && npm version patch && npm run build && npm publish"
   },
   "keywords": [],
   "author": "",
