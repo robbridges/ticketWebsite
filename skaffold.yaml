@@ -27,4 +27,13 @@ build:
           - src: '**/*.tsx'
             dest: .
           - src: '**/*.js'
-            dest: .         
+            dest: . 
+    - image: us.gcr.io/ticketingwebsite-dev/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+
