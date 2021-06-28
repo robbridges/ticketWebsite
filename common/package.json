@@ -3,9 +3,9 @@
   "version": "1.0.4",
   "description": "",
   "main": "./build/index.js",
-  "types": "/build/index.d.ts",
+  "types": "./build/index.d.ts",
   "files": [
-    "build"
+    "build/**/*"
   ],
   "scripts": {
     "clean": "del-cli ./build/*",
