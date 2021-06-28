@@ -1,10 +1,8 @@
 import express from 'express';
 import 'express-async-errors'
-
 import cookieSession from 'cookie-session';
-
-
-import { errorHandler, NotFoundError } from '@ticket.dev/common';
+import { errorHandler, NotFoundError, currentUser } from '@ticket.dev/common';
+import { createTicketRouter } from './routes/new';
 
 
 
@@ -24,6 +22,9 @@ app.use(
     secure: process.env.NODE_ENV !== 'test'
   })
 );
+app.use(currentUser);
+
+app.use(createTicketRouter)
 
 
 

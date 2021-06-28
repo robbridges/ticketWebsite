@@ -49,16 +49,15 @@ afterAll( async ()=> {
 is an authenicated request test in our testing environment */
 
 global.signin = async () => {
-  const email = 'admin@admin.com';
-  const password = 'password';
-  const response = await request(app)
-    .post('/api/users/signup')
-    .send({
-      email,password
-    })
-    .expect(201);
+  // Build a JWT payload.
 
-  const cookie = response.get('Set-cookie');
+  // create the JWT!
 
-  return cookie;
+  // Build a session Object
+
+  // turn that session into JSON
+
+  //take Json and encode as base64
+
+  return '';
 };

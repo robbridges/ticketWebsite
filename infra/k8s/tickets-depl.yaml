@@ -15,7 +15,9 @@ spec:
       containers:
         - name: tickets
           image: us.gcr.io/ticketingwebsite-dev/tickets
-          env:
+          env: 
+            - name: MONGO_URI
+              value: 'mongodb://tickets-mongo-srv:27017/tickets'
             - name: JWT_TOKEN
               valueFrom:
                 secretKeyRef:
