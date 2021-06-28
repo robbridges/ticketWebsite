@@ -17,7 +17,7 @@ type Props = {
 
 const LandingPage = ({ props }: Props) => {
   
-  return props.currentUser? <h1>Hello </h1> : <h1>GoodBye</h1>
+  return props.currentUser? <h1>Hello </h1> : <h1>Good Bye</h1>
 };
 
 
