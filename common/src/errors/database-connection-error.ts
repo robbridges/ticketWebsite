@@ -20,4 +20,3 @@ export class DatabaseConnectionError extends CustomError {
     ];
   }
 }
-

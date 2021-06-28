@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { beforeAll, beforeEach, afterAll } from '@jest/globals'
 import { app } from '../app';
 import request from 'supertest';
-import { cookie } from 'express-validator';
+
 
 declare global {
   namespace NodeJS {
