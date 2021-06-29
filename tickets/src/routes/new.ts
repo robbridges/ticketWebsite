@@ -4,7 +4,7 @@ import { body } from 'express-validator';
 import { Ticket } from '../models/tickets';
 
 const router = express.Router();
-
+// route handler to create new ticket
 router.post('/api/tickets', requireAuth, [
   body('title')
     .not()
