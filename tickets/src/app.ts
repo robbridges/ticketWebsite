@@ -3,6 +3,7 @@ import 'express-async-errors'
 import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError, currentUser } from '@ticket.dev/common';
 import { createTicketRouter } from './routes/new';
+import { ShowTicketRouter } from './routes/show';
 
 
 
@@ -24,7 +25,8 @@ app.use(
 );
 app.use(currentUser);
 
-app.use(createTicketRouter)
+app.use(createTicketRouter);
+app.use(ShowTicketRouter);
 
 
 
