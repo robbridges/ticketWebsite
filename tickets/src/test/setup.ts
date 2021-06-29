@@ -47,12 +47,13 @@ afterAll( async ()=> {
   await mongoose.connection.close();
 });
 /* we are creating a global sign up variable so that we do not duplicate every time there
-is an authenicated request test in our testing environment */
+is an authenicated request test in our testing environment In this environment we are actually creating a random ID every time. So that during testing we can test
+if the user ID is different that user will not be able to update the ticket. Essentially cannot update a ticket you do not own. */
 
 global.signin =  () => {
   // Build a JWT payload.
   const payload = {
-    id: 'djdwjalk',
+    id: new mongoose.Types.ObjectId().toHexString(),
     email: 'admin@admin.com'
   }; 
 
