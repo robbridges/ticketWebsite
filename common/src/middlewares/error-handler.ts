@@ -1,6 +1,7 @@
 import {Request, Response, NextFunction } from 'express';
 import { CustomError } from '../errors/custom-error';
 
+//general error handler. Printers errors we do not expect to come across
 export const errorHandler = (
   err: Error,
   req: Request,
