@@ -17,9 +17,14 @@ stan.on('connect', () => {
     console.log('NATS connection closed!');
     process.exit();
   });
-  // chaining different options to nats, manual acknowledgements so that we only complete
-  /* a request once it's been succesful, and playing with delivery all mode, though this not forseeable as
-  when any project scales we are looking at resending a lot of events at once */
+  /* 
+  chaining different options to nats, manual acknowledgements so that we only complete
+  a request once it's been succesful, and playing with delivery all mode, though this not forseeable as
+  when any project scales we are looking at resending a lot of events at once.
+  
+  Fixed! We can set a durable name a que group so that nats keeps a record and sends us what we need. 
+  So then we do not send the entire list to the group once it restarts
+  */
   const options = stan
   .subscriptionOptions()
   .setManualAckMode(true)
