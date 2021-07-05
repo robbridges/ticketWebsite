@@ -8,10 +8,24 @@ const start = async () => {
     throw new Error('JWT_Key must be defined');
   }
   if (!process.env.MONGO_URI) {
-    throw new Error ('MONGO_URI must be defined')
+    throw new Error ('MONGO_URI must be defined');
   }
+  if (!process.env.NATS_CLIENT_ID) {
+    throw new Error ('NATS client ID must be defined');
+  }
+  if (!process.env.NATS_URL) {
+    throw new Error ('NATS url must be defined');
+  }
+  if (!process.env.NATS_CLUSTER_ID) {
+    throw new Error ('NATS cluster ID must be defined');
+  }
+
   try {
-    await natsWrapper.connect('ticketing', 'jalaj', 'http://nats-srv:4222');
+    await natsWrapper.connect(
+      process.env.NATS_CLUSTER_ID,
+      process.env.NATS_CLIENT_ID,
+      process.env.NATS_URL
+    );
     // graceful shut down on nats client, so that nats knows to stop looking for something we just shut down.
     natsWrapper.client.on('close', () => {
       console.log('NATS connection closed!');
