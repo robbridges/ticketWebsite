@@ -1,4 +1,4 @@
-export enum OrderSatus {
+export enum OrderStatus {
   //order is created, but the ticket it is in trying to order has not been reserved
   Created = 'created',
   
