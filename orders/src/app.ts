@@ -2,10 +2,10 @@ import express from 'express';
 import 'express-async-errors'
 import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError, currentUser } from '@ticket.dev/common';
-import { deleteOrderRouter } from '../routes/delete';
-import { indexOrderRouter } from '../routes/index';
-import { newOrderRouter } from '../routes/new';
-import { showOrderRouter } from '../routes/show';
+import { deleteOrderRouter } from './routes/delete';
+import { indexOrderRouter } from './routes/index';
+import { newOrderRouter } from './routes/new';
+import { showOrderRouter } from './routes/show';
 
 /* While it may seem crazy to not sign or encrypt our cookie, there is actually a reason for it. We are only using the cookie to transport a JWT. Which can't be tampered with,
     So a malicious user can read all the data that he wants, changing it invalidates the token. Why this change? In the event one of our services ever gets written in another language
