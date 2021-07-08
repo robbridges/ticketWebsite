@@ -19,7 +19,7 @@ it('returns an error if ticket does not exist', async () => {
     .expect(404);
 });
 
-it ('returns an error if ticket is already reserved', async () => {
+it('returns an error if ticket is already reserved', async () => {
   const ticket = Ticket.build({
     title: 'conert',
     price: 20
@@ -41,7 +41,7 @@ it ('returns an error if ticket is already reserved', async () => {
     .expect(400);
 });
 
-it ('reserved a ticket', async () => {
+it('reserved a ticket', async () => {
   const ticket = Ticket.build({
     title: 'Concert!',
     price: 20,
@@ -55,3 +55,5 @@ it ('reserved a ticket', async () => {
     .send({ticketId: ticket.id})
     .expect(201);
 });
+
+it.todo('emits an order created event')
