@@ -1,7 +1,7 @@
 import { Subjects } from "./subjects";
 
 export interface OrderCancelledEvent {
-  Subjects: Subjects.OrderCancelled;
+  subject: Subjects.OrderCancelled;
   data: {
     id: string;
     ticket: {
