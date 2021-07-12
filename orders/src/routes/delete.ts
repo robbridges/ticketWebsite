@@ -3,7 +3,7 @@ import { NotAuthorizedError, NotFoundError, requireAuth } from '@ticket.dev/comm
 import { Order, OrderStatus } from '../models/order';
 import { OrderCancelledPublisher } from '../events/publisher/order-cancelled-publisher';
 import { natsWrapper } from '../nats-wrapper';
-import { Ticket } from '../models/ticket';
+
 
 
 const router = express.Router();

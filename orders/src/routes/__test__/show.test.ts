@@ -1,11 +1,12 @@
 import  request  from 'supertest';
 import { app } from '../../app'
-import { Order } from '../../models/order';
+import mongoose from 'mongoose'
 import { Ticket } from '../../models/ticket';
 
 it('Fetches the order', async () => {
   //create ticket
   const ticket = Ticket.build({
+    id: mongoose.Types.ObjectId().toHexString(),
     title: 'concert',
     price: 20
   });
@@ -32,6 +33,7 @@ it('Fetches the order', async () => {
 it('makes sure user cannot look at order that they do not own', async () => {
   //create ticket
   const ticket = Ticket.build({
+    id: mongoose.Types.ObjectId().toHexString(),
     title: 'concert',
     price: 20
   });
