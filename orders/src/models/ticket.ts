@@ -49,7 +49,7 @@ ticketSchema.plugin(updateIfCurrentPlugin);
 //     version: this.get('version') - 1
 //   };
 
-//   //done();
+//   
 // })
 
 ticketSchema.statics.build = (attrs: TicketAttrs) => {

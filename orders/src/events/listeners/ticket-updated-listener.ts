@@ -15,8 +15,9 @@ export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
       throw new Error('Ticket not found');
     }
     
-    const {title, price, version} = data;
-    ticket.set({title, price, version });
+    // If I ever need to switch to a different concurrency control that is not controleld by the app I will uncomment this line of code and the line in the ticket model on this service
+    const {title, price, /*version */} = data;
+    ticket.set({title, price, /*version */ });
     await ticket.save();
 
     msg.ack();
