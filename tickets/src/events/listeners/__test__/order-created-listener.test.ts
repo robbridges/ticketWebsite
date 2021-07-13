@@ -4,6 +4,7 @@ import { Message } from "node-nats-streaming";
 import { Ticket } from "../../../models/tickets";
 import { OrderCreatedEvent, OrderStatus } from "@ticket.dev/common";
 import mongoose from "mongoose";
+import { JsonWebTokenError } from "jsonwebtoken";
 
 
 
@@ -56,4 +57,17 @@ it('acks the message', async () => {
   await listener.onMessage(data, msg);
 
   expect(msg.ack).toHaveBeenCalled();
+});
+
+it('publishes a ticket updated event', async () => {
+  const {listener, ticket, data, msg} = await setup();
+
+  await listener.onMessage(data,msg);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
+
+  
+  const ticketUpdatedData = JSON.parse((natsWrapper.client.publish as jest.Mock).mock.calls[0][1]);
+
+  expect(data.id).toEqual(ticketUpdatedData.orderId);
 });
