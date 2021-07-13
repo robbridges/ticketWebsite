@@ -4,7 +4,7 @@ import { Message } from "node-nats-streaming";
 import { Ticket } from "../../../models/tickets";
 import { OrderCreatedEvent, OrderStatus } from "@ticket.dev/common";
 import mongoose from "mongoose";
-import { JsonWebTokenError } from "jsonwebtoken";
+
 
 
 
