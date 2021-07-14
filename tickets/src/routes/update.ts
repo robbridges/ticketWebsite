@@ -4,7 +4,8 @@ import {
   validateRequest,
   NotFoundError,
   requireAuth,
-  NotAuthorizedError
+  NotAuthorizedError,
+  BadRequestError
 } from '@ticket.dev/common';
 
 import { Ticket } from '../models/tickets';
@@ -31,6 +32,10 @@ router.put(
 
   if(!ticket) {
     throw new NotFoundError();
+  }
+
+  if(ticket.orderId) {
+    throw new BadRequestError('This ticket is reserved, and cannot be edited');
   }
   // over ride the typescript error as we made sure that current user was set in our require auth middleware
   if (ticket.userId !== req.currentUser!.id) {
