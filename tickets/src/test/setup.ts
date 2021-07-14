@@ -22,7 +22,7 @@ let mongo: any;
 
 
 beforeAll(async () => {
-  jest.clearAllMocks();
+  
   process.env.JWT_TOKEN = 'dwadwad'
   
   mongo = new MongoMemoryServer();
