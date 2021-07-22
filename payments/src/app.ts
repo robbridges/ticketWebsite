@@ -2,6 +2,7 @@ import express from 'express';
 import 'express-async-errors'
 import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError, currentUser } from '@ticket.dev/common';
+import { createChargeRouter } from './routes/new';
 
 
 
@@ -23,7 +24,7 @@ app.use(
 );
 app.use(currentUser);
 
-
+app.use(createChargeRouter);
 
 
 
