@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 
 
 declare global {
+  namespace NodeJS {}
   var signin: (id?: string) => string[];
 }
 
@@ -48,10 +49,10 @@ afterAll( async ()=> {
 is an authenicated request test in our testing environment In this environment we are actually creating a random ID every time. So that during testing we can test
 if the user ID is different that user will not be able to update the ticket. Essentially cannot update a ticket you do not own. */
 
-global.signin =  () => {
+global.signin =  (id?: string) => {
   // Build a JWT payload.
   const payload = {
-    id: new mongoose.Types.ObjectId().toHexString(),
+    id: id || new mongoose.Types.ObjectId().toHexString(),
     email: 'admin@admin.com'
   }; 
 
