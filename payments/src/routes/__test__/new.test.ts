@@ -86,5 +86,4 @@ it('returns a 204 with valid inputs', async () => {
   expect(chargeOptions.source).toEqual('tok_visa');
   expect(chargeOptions.amount).toEqual(20 * 100);
   expect(chargeOptions.currency).toEqual('usd');
-  //it works :)!
 });
