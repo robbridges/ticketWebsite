@@ -7,6 +7,8 @@ import { stripe } from '../stripe';
 import { Order } from '../models/order';
 
 
+
+
 const router = express.Router();
 
 router.post('/api/payments', requireAuth, 
@@ -41,7 +43,7 @@ router.post('/api/payments', requireAuth,
     description: `test charge ${orderId}`,
   });
 
-  res.send({Success: true}); 
+  res.status(201).send({Success: true}); 
 });
 
 export {router as createChargeRouter};
