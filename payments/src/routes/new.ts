@@ -5,6 +5,7 @@ import {body } from 'express-validator';
 import { requireAuth, validateRequest, BadRequestError, NotFoundError, NotAuthorizedError, OrderStatus } from '@ticket.dev/common';
 import { stripe } from '../stripe';
 import { Order } from '../models/order';
+import { Payment } from '../models/payments';
 
 
 
@@ -36,12 +37,18 @@ router.post('/api/payments', requireAuth,
     throw new BadRequestError('Cannot pay for an cancelled order');
   }
 
-  await stripe.charges.create({
+  const charge = await stripe.charges.create({
     currency: 'usd',
     amount: order.price * 100,
     source: token,
     description: `test charge ${orderId}`,
   });
+
+  const payment = Payment.build({
+    orderId,
+    stripeId: charge.id,
+  });
+  await payment.save();
 
   res.status(201).send({Success: true}); 
 });
