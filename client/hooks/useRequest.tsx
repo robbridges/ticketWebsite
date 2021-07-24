@@ -10,6 +10,8 @@ type Props ={
   body: {
     email?: string,
     password?: string,
+    title?: string,
+    price?: string,
   }
   onSuccess: Function
 }
