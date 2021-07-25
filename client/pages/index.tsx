@@ -5,32 +5,64 @@ import { NextPageContext } from 'next';
 
 
 type Props = {
-  props: {
-    currentUser: {
+  currentUser: {
       id: string,
       email: string,
       iat: number
-    }
+  },
+  tickets: {
+    title: string,
+    price: number,
+    userId: string,
+    version: number,
+    id: string,
   }
+  
 }
 // this is our landing page, it is going to try to get props passed in if a current user is signed in. So that we can then conditionally different objects
 
-const LandingPage = ({ props }: Props) => {
+const LandingPage = ({ tickets } : Props) => {
+  //@ts-ignore
+  const ticketList = tickets.map(ticket => {
+    return (
+      <tr key = {ticket.id}>
+        <td>{ticket.title}</td>
+        <td>{ticket.price}</td>
+      </tr>
+    );
+  })
+  // return currentUser? <h1>Hello </h1> : <h1>Good Bye</h1>
+  return (
+    <div>
+      <h1>Tickets</h1>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ticketList}
+        </tbody>
+      </table>
+    </div> 
   
-  return props.currentUser? <h1>Hello </h1> : <h1>Good Bye</h1>
+  )
+  
 };
-
 
 
 export async function getServerSideProps({ req }: NextPageContext) {
   const {data} = await axios.get(
-    'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser', 
+    'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/tickets/', 
     { headers: req!.headers }
   );
-  console.log('landing page!')
+  
+  console.log({data});
   return {
     props: {
-      props: data
+      tickets: data
     }
   }
 } 
