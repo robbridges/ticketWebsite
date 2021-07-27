@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { NextPageContext } from 'next';
+import Link from 'next/link';
 
 
 
@@ -28,6 +29,11 @@ const LandingPage = ({ tickets } : Props) => {
       <tr key = {ticket.id}>
         <td>{ticket.title}</td>
         <td>{ticket.price}</td>
+        <td>
+          <Link href="/tickets/[ticketId]" as={`/tickets/${ticket.id}`}>
+            <a>View</a>
+          </Link>
+        </td>
       </tr>
     );
   })
@@ -40,6 +46,7 @@ const LandingPage = ({ tickets } : Props) => {
           <tr>
             <th>Title</th>
             <th>Price</th>
+            <th>Link</th>
           </tr>
         </thead>
         <tbody>
