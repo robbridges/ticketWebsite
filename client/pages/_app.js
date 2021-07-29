@@ -19,8 +19,7 @@ to be depreciated method
 AppComponent.getInitialProps = async (appContext) => {
   const client = BuildClient(appContext.ctx);
   const { data } = await client.get('api/users/currentuser');
-  console.log('App page!');
-  console.log(data.currentUser);
+  
   
   return {
     currentUser: data.currentUser

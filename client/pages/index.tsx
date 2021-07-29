@@ -66,7 +66,7 @@ export async function getServerSideProps({ req }: NextPageContext) {
     { headers: req!.headers }
   );
   
-  console.log({data});
+  
   return {
     props: {
       tickets: data
