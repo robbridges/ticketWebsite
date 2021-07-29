@@ -3,6 +3,7 @@ import axios from "axios";
 import {useEffect, useState} from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import useRequest from '../../hooks/useRequest'
+import Router from 'next/router';
 
 
 interface Order   {
@@ -43,7 +44,7 @@ const OrderShow = ({order, currentUser} : Order) => {
       //@ts-ignore
       orderId: order.id,
     },
-    onSuccess: (payment : string) => console.log(payment)
+    onSuccess: () => Router.push('/orders'),
   });
 
   useEffect(() => {

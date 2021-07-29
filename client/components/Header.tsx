@@ -8,6 +8,8 @@ const Header = ({currentUser} : any) => {
 const links: {}[] =  [
   !currentUser && {label: 'Sign up', href: '/auth/signup'},
   !currentUser && {label: 'Sign in', href: '/auth/signin'},
+  currentUser && {label: 'Sell Tickets', href: '/tickets/new'},
+  currentUser && {label: 'My orders', href: '/orders'},
   currentUser && {label: 'Sign out', href: '/auth/signout'}
 ]
   .filter(linkConfig => linkConfig)
