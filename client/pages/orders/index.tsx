@@ -19,7 +19,7 @@ const OrderIndex = ({orders}: Orders) => {
   }}
   return (
     <ul>
-      {orders? 
+      
       {/* @ts-ignore */}
       {orders.map(order => {
         return (
