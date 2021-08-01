@@ -4,7 +4,7 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 
 
 const start = async () => {
-  
+  console.log('starting');
   if (!process.env.NATS_CLIENT_ID) {
     throw new Error ('NATS client ID must be defined');
   }
