@@ -14,8 +14,12 @@ interface Orders {
 }
 
 const OrderIndex = ({orders}: Orders) => {
+  {if (!orders)  {
+    return <h2>You have no purchased orders</h2>
+  }}
   return (
     <ul>
+      {orders? 
       {/* @ts-ignore */}
       {orders.map(order => {
         return (
