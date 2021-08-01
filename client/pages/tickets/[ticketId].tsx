@@ -50,7 +50,7 @@ const TicketShow = ({ticket} : Props) => {
 
 export async function getServerSideProps(context: NextPageContext) {
   const { ticketId } = context.query;
-const { data } = await axios.get(`http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/tickets/${ticketId}`, 
+const { data } = await axios.get(`http://www.ticketing-app-production.com/api/tickets/${ticketId}`, 
 { headers: context.req!.headers }
 );
   //console.log({data})
