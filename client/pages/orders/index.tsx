@@ -4,6 +4,7 @@ import axios from "axios";
 interface Orders {
   orders: {
     status: string,
+    length: number,
     
     ticket: {
       title: string,
@@ -14,7 +15,7 @@ interface Orders {
 }
 
 const OrderIndex = ({orders}: Orders) => {
-  {if (!orders)  {
+  {if (orders.length == 0)  {
     return <h2>You have no purchased orders</h2>
   }}
   return (
