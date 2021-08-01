@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: us.gcr.io/ticketingwebsite-dev/client
+          image: robbridges/client
 ---
 apiVersion: v1
 kind: Service
