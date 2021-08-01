@@ -12,8 +12,7 @@ const BuildClient = ({ req }: NextPageContext) => {
     // We are on the server
 
     return axios.create({
-      baseURL:
-        'http://ticketing-app-production.com',
+      baseURL:'http://ticketing-app-production.com/',
       headers: req!.headers,
     });
   } else {
