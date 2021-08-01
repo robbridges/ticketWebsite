@@ -30,7 +30,7 @@ const OrderIndex = ({orders}: Orders) => {
 
 export async function getServerSideProps(context: NextPageContext) {
   
-const { data } = await axios.get('http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/orders/', 
+const { data } = await axios.get('http://www.ticketing-app-production.com/api/orders/', 
   { headers: context.req!.headers }
 
 );

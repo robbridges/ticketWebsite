@@ -93,7 +93,7 @@ const OrderShow = ({order, currentUser} : Order) => {
 
 export async function getServerSideProps(context: NextPageContext) {
   const { orderId } = context.query;
-const { data } = await axios.get(`http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/orders/${orderId}`, 
+const { data } = await axios.get(`http://www.ticketing-app-production.com/api/orders/${orderId}`, 
 { headers: context.req!.headers }
 );
   
