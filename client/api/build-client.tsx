@@ -13,7 +13,7 @@ const BuildClient = ({ req }: NextPageContext) => {
 
     return axios.create({
       baseURL:
-        'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
+        'http://ticketing-app-production.com',
       headers: req!.headers,
     });
   } else {
