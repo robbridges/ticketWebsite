@@ -40,7 +40,7 @@ const LandingPage = ({ tickets } : Props) => {
   // return currentUser? <h1>Hello </h1> : <h1>Good Bye</h1>
   return (
     <div>
-      <h1>Tickets</h1>
+      <h2>Tickets</h2>
       <table className="table">
         <thead>
           <tr>
